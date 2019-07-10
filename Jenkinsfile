@@ -14,15 +14,15 @@ node {
    }
 }
 
-   stage("Quality Gate") {
-   timeout(time: 1, unit: 'HOURS') {
-   def qg = waitForQualityGate()
-   if (qg.status != 'OK') {
-   error "Pipeline aborted due to quality gate failure: ${qg.status}"
-   currentBuild.status='FAILURE'
-   }
-   }
-   } 
+stage("Quality Gate") {
+timeout(time: 1, unit: 'HOURS') {
+def qg = waitForQualityGate()
+if (qg.status != 'OK') {
+error "Pipeline aborted due to quality gate failure: ${qg.status}"
+currentBuild.status='FAILURE'
+}
+}
+} 
           
    stage('Build') {
       // Run the maven build
