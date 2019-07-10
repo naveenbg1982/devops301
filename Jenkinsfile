@@ -8,6 +8,11 @@ node {
       // **       in the global configuration.           
       mvnHome = tool 'Maven'
    }
+   stage('sonarqube'){
+   withSonarQubeEnv("sonar"){
+      sh'mvn clean package sonar:sonar'
+   }
+}
    stage('Build') {
       // Run the maven build
       withEnv(["MVN_HOME=$mvnHome"]) {
