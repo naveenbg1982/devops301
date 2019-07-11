@@ -1,5 +1,6 @@
 node {
    def mvnHome
+   def server=Artifactory.server 'Jfrog'
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/naveenbg1982/Java-Mysql-Simple-Login-Web-application.git'
@@ -33,5 +34,16 @@ currentBuild.status='FAILURE'
             bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
          }
       }
+      stage('artifactory upload') {
+         def uploadSpec = """{
+         "files": [
+    {
+         "pattern": "target/LoginWebApp.war",
+         "target": "repo1/"
+    }
+ ]
+}"""
+server.upload(uploadSpec)
+      
    }
 }
