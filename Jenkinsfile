@@ -33,6 +33,9 @@ sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
 bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
 }
 }
+stage('dockerimagebuild') {
+   sh 'docker build -t naveenbg1982/simplejavalogin:${BUILD_NUMBER} .'
+}
 stage('artifactory upload') {
 def uploadSpec = """{
 "files": [
