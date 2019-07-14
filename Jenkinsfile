@@ -54,7 +54,7 @@ node {
 		"files": [
 		{
 			"pattern": "repo1/",
-			"target": "../Artifactory/"
+			"target": "."
 		}
 		]
 		}"""
