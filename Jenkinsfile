@@ -54,7 +54,7 @@ node {
 		"files": [
 		{
 			"pattern": "repo1/LoginWebApp.war",
-			"target": "."
+			"target": "/var/lib/jenkins/pipeline1/"
 		}
 		]
 		}"""
