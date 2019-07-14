@@ -58,6 +58,6 @@ node {
 		}"""
 		server.upload(downloadSpec)
 		}
-	}
+        }
 }
   
