@@ -45,8 +45,8 @@ node {
 		]
 		}"""
 		server.upload(uploadSpec)
-		}
 	}
+		
 	stage('artifactory download') {
 		def downloadSpec = """{
 		"files": [
@@ -57,7 +57,9 @@ node {
 		]
 		}"""
 		server.upload(downloadSpec)
-		}
-    }
+	}
+    
 }
+	
+	
   
