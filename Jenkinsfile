@@ -33,7 +33,11 @@ sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
 bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
 }
 }
-stage('dockerimagebuild') {
+   
+stage('docker image build') {
+   sh 'docker build naveenbg1982/simplejavalogin:${BUILD_NUMBER} .'
+}
+stage('docker image push') {
    sh 'docker push naveenbg1982/simplejavalogin:${BUILD_NUMBER}'
 }
    
