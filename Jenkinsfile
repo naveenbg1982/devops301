@@ -60,6 +60,9 @@ node {
 		}"""
 		server.download(downloadSpec)
 	}
+	stage('SCP'){
+		sh "scp ../../pipeline1/LoginWebApp.war devopsmachine@mgmhy4755dns1.eastus2.cloudapp.azure.com:/opt/tomcat/webapps/"
+	}
     
 }
 	
