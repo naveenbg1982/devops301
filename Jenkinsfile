@@ -53,7 +53,7 @@ node {
 		def downloadSpec = """{
 		"files": [
 		{
-			"pattern": "repo1/",
+			"pattern": "repo1/LoginWebApp.war",
 			"target": "."
 		}
 		]
