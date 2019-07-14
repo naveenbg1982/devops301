@@ -1,11 +1,12 @@
 node {
-   def mvnHome
-   def server=Artifactory.server 'Jfrog'
-    stage('Preparation') { // for display purposes
-		  git 'https://github.com/naveenbg1982/Java-Mysql-Simple-Login-Web-application.git'
-		  mvnHome = tool 'Maven'
-    }
-    stage('sonarqube'){
+    def mvnHome
+    def server=Artifactory.server 'Jfrog'
+    
+        stage('Preparation') { // for display purposes
+	    git 'https://github.com/naveenbg1982/Java-Mysql-Simple-Login-Web-application.git'
+	     mvnHome = tool 'Maven'
+        }
+	stage('sonarqube'){
 	   withSonarQubeEnv("sonar"){
 		  sh'mvn clean package sonar:sonar'
 	   }
@@ -19,7 +20,8 @@ node {
 			currentBuild.status='FAILURE'
 			}
 		}
-	} 
+	}
+	
 	stage('Build') {
 	// Run the maven build
 		withEnv(["MVN_HOME=$mvnHome"]) {
@@ -56,7 +58,7 @@ node {
 		}
 		]
 		}"""
-		server.upload(downloadSpec)
+		server.download(downloadSpec)
 	}
     
 }
