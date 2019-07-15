@@ -41,7 +41,7 @@ node {
 		}"""
 		server.upload(uploadSpec)
 	}
-//Download from Artofactory into the VM		
+//Download from Artifactory into the VM		
 	stage('artifactory download') {
 		def downloadSpec = """{
 		"files": [
